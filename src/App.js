@@ -62,6 +62,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/login" component={LoginContainer} />
+          <Route exact path="/TraveltoLebanon" component={LoginContainer} />
           <Route exact path="/" component={LoginContainer} />
           <Route exact path="/(register)" component={RegistrationContainer} />
           <Route component={DefaultContainer} />

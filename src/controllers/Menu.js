@@ -6,31 +6,6 @@ import '../components/App.css';
 import { getCountrybyCategory } from '../api/api';
 
 const Menu = () => {
-    const [country, setCountry] = useState([]);
-
-    useEffect(() => {
-        loadPlaces();
-    }, [])
-
-    const loadPlaces = async () => {
-
-
-        let Country = {
-            Category: "Sites"
-        }
-
-        const response = await getCountrybyCategory(Country);
-
-        try {
-            setCountry(response?.data);
-        } catch (error) {
-            console.log(error);
-        }
-        finally {
-
-        }
-    }
-
 
     return (
 

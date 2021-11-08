@@ -55,7 +55,7 @@ function Search({ details }) {
             <div className="pa2 text-center">
                 <input className="pa3 bb br3 grow b--none bg-lightest-blue ma3 Name"
                     type="search" id="Name"
-                    placeholder=" Enter Location or Name to check if found"
+                    placeholder="Search by Location or Name"
                     onChange={handleChange}
                 />
             </div>
