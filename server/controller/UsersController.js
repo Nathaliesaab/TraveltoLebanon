@@ -57,7 +57,7 @@ exports.insertUser = (req, res) => {
 
     console.log(saveSql);
 
-    connection.query(saveSQL, (err, result) => {
+    connection.query(saveSql, (err, result) => {
         if (err) throw err;
         res.status(200).send(result)
 

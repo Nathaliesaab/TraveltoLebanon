@@ -13,12 +13,12 @@ exports.insertFlight = (req, res) => {
     let saveSql = "";
 
 
-    saveSQL = `INSERT INTO User_Ticket(user_id,TicketNo) VALUES\
+    saveSql = `INSERT INTO User_Ticket(user_id,TicketNo) VALUES\
         ("${user_id}", "${TicketNo}")`;
 
     console.log(saveSql);
 
-    connection.query(saveSQL, (err, result) => {
+    connection.query(saveSql, (err, result) => {
         if (err) throw err;
         res.status(200).send(result)
 
