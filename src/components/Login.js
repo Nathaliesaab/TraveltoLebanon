@@ -6,6 +6,9 @@ import {
 } from "react-router-dom";
 import Travel from './Tarvel';
 import { GoogleLogin } from 'react-google-login';
+import usersActions from '../redux/actions/users';
+import { connect } from 'react-redux';
+
 import axios from 'axios';
 const { OAuth2Client } = require('google-auth-library');
 
@@ -59,6 +62,10 @@ const Login = ({ id, setId }) => {
 
     useEffect(() => {
         loadUsers();
+
+        // const { dispatch } = this.props;
+
+        // dispatch(usersActions.getAll());
     }, [])
 
 
