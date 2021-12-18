@@ -1,15 +1,54 @@
 import React, { useState, useEffect } from 'react';
-import { getAll } from '../api/api';
+import { getAll, getUserByName, googlelogin, insertUser } from '../api/api';
 import {
     useHistory,
     Link
 } from "react-router-dom";
 import Travel from './Tarvel';
+import { GoogleLogin } from 'react-google-login';
+import axios from 'axios';
+const { OAuth2Client } = require('google-auth-library');
 
+
+const client = new OAuth2Client('1092910563903-qv6jqr7okondoc736k2ivfr2to2e2bp4.apps.googleusercontent.com');
+
+const clientId = '1092910563903-qv6jqr7okondoc736k2ivfr2to2e2bp4.apps.googleusercontent.com';
 
 const Login = ({ id, setId }) => {
 
+
     let history = useHistory();
+
+    const [showloginButton, setShowloginButton] = useState(true);
+    const [redirect, setRedirect] = useState("false");
+
+    const onLoginSuccess = async (response) => {
+        let dataresp;
+        axios({
+            method: "POST",
+            url: "http://localhost:3001/googlelogin",
+            data: { tokenId: response.tokenId }
+        }).then(responseAuth => {
+            dataresp = responseAuth
+            console.log("Logged in");
+            if (dataresp) {
+                console.log("Logged in 2");
+                setRedirect("true");
+                if (redirect === "true") {
+                    history.push("/travel")
+                }
+            }
+            else {
+                setRedirect("false");
+            }
+        })
+
+
+    }
+
+    const onLoginFailure = (res) => {
+        console.log('Login Failed:', res);
+    };
 
     const [data, setData] = useState([])
     const [values, setValues] = useState({
@@ -19,8 +58,7 @@ const Login = ({ id, setId }) => {
     });
 
     useEffect(() => {
-        loadUsers()
-
+        loadUsers();
     }, [])
 
 
@@ -39,6 +77,7 @@ const Login = ({ id, setId }) => {
     }
 
 
+
     const changeHandlerAll = (Name) => event => {
         setValues({ ...values, [Name]: event.target.value })
         console.log(values);
@@ -49,6 +88,7 @@ const Login = ({ id, setId }) => {
         let Password = values.Password
         for (let i = 0; i < data.length; i++) {
             if (Name === data[i].Name && Password === data[i].Password) {
+                localStorage.setItem("user", data[i]);
                 return true;
             }
         }
@@ -60,6 +100,7 @@ const Login = ({ id, setId }) => {
         for (let i = 0; i < data.length; i++) {
             if (name === data[i].Name && password === data[i].Password) {
                 return data[i].id;
+
             }
         }
     }
@@ -121,8 +162,19 @@ const Login = ({ id, setId }) => {
 
                     </div>
                 </div>
+                <div>
+                    {showloginButton ?
+                        <GoogleLogin
+                            clientId={clientId}
+                            buttonText="Sign In"
 
+                            onSuccess={onLoginSuccess}
+                            onFailure={onLoginFailure}
+                            cookiePolicy={'single_host_origin'}
+                            isSignedIn={true}
+                        /> : null}
 
+                </div>
             </form >
 
         </div >
@@ -131,3 +183,8 @@ const Login = ({ id, setId }) => {
 
 }
 export default Login;
+
+
+
+
+

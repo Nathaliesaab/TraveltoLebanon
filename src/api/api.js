@@ -7,6 +7,11 @@ const getAll = async () => {
     return await axios.get(url).then(response => response).catch(err => err.response)
 }
 
+const fetchRefData = async (data) => {
+    let url = `${baseUrl}/fetchRefData`
+    return await axios.post(url, data).then(response => response).catch(err => err.response)
+}
+
 
 const update = async (data) => {
     let url = `${baseUrl}/updateUser`
@@ -21,7 +26,6 @@ const insertUser = async (data) => {
 const deleteUser = async (data) => {
 
     let url = `${baseUrl}/deleteUser`;
-
     return await axios.post(url, data).then(response => response).catch(err => err.response)
 
 }
@@ -32,6 +36,10 @@ const getTickets = async () => {
     return await axios.get(url).then(response => response).catch(err => err.response)
 }
 
+const getUserByName = async (data) => {
+    let url = `${baseUrl}/getUserByName`
+    return await axios.post(url, data).then(response => response).catch(err => err.response)
+}
 
 const updateTickets = async (data) => {
     let url = `${baseUrl}/updateTickets`
@@ -71,6 +79,23 @@ const insertFlight = async (data) => {
 
 }
 
+const fetchOptions = async (data) => {
+    let url = `${baseUrl}/fetchOptions`
+    return await axios.post(url, data).then(response => response).catch(err => err.response)
+}
+
+
+const insertResults = async (data) => {
+    let url = `${baseUrl}/insertResults`
+    return await axios.post(url, data).then(response => response).catch(err => err.response)
+}
+
+const googlelogin = async (data) => {
+    let url = `${baseUrl}/googlelogin'`
+    return await axios.post(url, data).then(response => response).catch(err => err.response)
+}
+
+
 
 export {
     getAll,
@@ -84,6 +109,11 @@ export {
     deleteTickets,
     updateTickets,
     getCountrybyCategory,
-    insertFlight
+    insertFlight,
+    fetchRefData,
+    fetchOptions,
+    insertResults,
+    getUserByName,
+    googlelogin,
 
 }

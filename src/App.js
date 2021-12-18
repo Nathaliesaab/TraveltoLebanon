@@ -9,6 +9,7 @@ import Account from './components/Account';
 import Activities from './components/Activities';
 import Login from './components/Login';
 import Registration from './components/Registration';
+import Logout from './components/Logout';
 import {
   BrowserRouter as Router,
   Switch,
@@ -53,6 +54,7 @@ function App() {
       <Route path="/account">
         <Account id={id} />
       </Route>
+
 
     </div>
   )

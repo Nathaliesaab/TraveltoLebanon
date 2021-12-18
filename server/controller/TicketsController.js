@@ -54,3 +54,13 @@ exports.updateTicket = (req, res) => {
     })
 
 }
+
+exports.fetchRefData = (req, res) => {
+    const { tableName, TicketNo, Departure } = req.body;
+    let sql = `select ${TicketNo} as TicketNo, ${Departure} as Departure from ${tableName}`;
+    console.log(sql);
+    connection.query(sql, (err, result) => {
+        if (err) throw err
+        res.status(200).send(result);
+    })
+}

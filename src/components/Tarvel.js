@@ -12,7 +12,7 @@ import Fall from '../images/Fall.jpeg';
 import Winter from '../images/Winter.jpeg';
 import Summer from '../images/Summer.jpeg';
 import Spring from '../images/Spring.jpeg'
-
+import WeatherApiTable from './WeatherApiTable'
 
 const Travel = ({ id }) => {
 
@@ -91,6 +91,10 @@ const Travel = ({ id }) => {
                     </div>
                 </div>
 
+                <div className="col-12" style={{
+                    height: "150px", backgroundColor: "white"
+                }}></div>
+
                 <div className="col-12 desc">
                     <div className="col-12 text-center">
                         <div className="title-about">
@@ -105,7 +109,34 @@ const Travel = ({ id }) => {
                         Spring and autumn are warm and pleasant. Winter (December to mid March) is the rainy season, with major precipitation. Traveling to Lebanon during any season will result in an enjoyable trip full fo tourism and activities to do.
                     </div>
                 </div>
-            </div>
+                {/* <div style={{ height: "100px", backgroundColor: "#282d32" }}>
+
+                </div> */}
+
+                <div className="col-2" style={{
+                    height: "150px", backgroundColor: "white"
+                }}></div>
+                <div className="col-8" style={{
+                    height: "150px", backgroundColor: "#282d32", width: "auto", color: "white"
+                }}>
+                    < div className="title-about text-center" style={{ color: "white" }}>
+                        View Lebanon's Live Weather in ℃
+                    </div>
+                </div>
+                <div className="col-2" style={{
+                    height: "150px", backgroundColor: "white"
+                }}></div>
+
+
+                <div className="row" style={{
+                    height: "100px", backgroundColor: "white"
+                }}></div>
+
+                <div className="description">
+                    <WeatherApiTable />
+                </div>
+
+            </div >
 
             <Contact />
         </div >

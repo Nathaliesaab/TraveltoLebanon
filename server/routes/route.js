@@ -5,13 +5,16 @@ var UsersController = require('../controller/UsersController')
 var TicketsController = require('../controller/TicketsController')
 var CountryController = require('../controller/CountryController')
 var FlightsController = require('../controller/FlightsController')
+var SurveyController = require('../controller/SurveyController')
+var GoogleAuthController = require('../controller/GoogleAuthController ')
 
 /**
- * User Routes
+* User Routes
 */
 router.post('/updateUser', UsersController.updateUser)
 router.post('/insertUser', UsersController.insertUser)
 router.post('/deleteUser', UsersController.deleteUser)
+router.post('/getUserByName', UsersController.getUserByName)
 router.get('/getAll', UsersController.getAll)
 
 
@@ -23,7 +26,7 @@ router.get('/getAll', UsersController.getAll)
 router.get('/getTickets', TicketsController.getTickets);
 router.post('/updateTickets', TicketsController.updateTicket);
 router.post('/deleteTickets', TicketsController.deleteTicket);
-
+router.post('/fetchRefData', TicketsController.fetchRefData);
 
 /**
  * Country Routes
@@ -40,7 +43,16 @@ router.post('/getCountrybyCategory', CountryController.getCountrybyCategory);
 router.post('/insertFlight', FlightsController.insertFlight);
 
 
+/**
+ * Survey Routes
+ */
+router.post('/fetchOptions', SurveyController.fetchOptions);
+router.post('/insertResults', SurveyController.insertResults);
 
 
+/**
+ * Google Routes
+ */
+router.post('/googlelogin', GoogleAuthController.googlelogin);
 
 module.exports = router
