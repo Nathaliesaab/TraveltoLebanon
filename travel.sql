@@ -44,6 +44,55 @@ INSERT INTO `Country` VALUES (1,'National Museum of Beirut','Activities','Beirut
 UNLOCK TABLES;
 
 --
+-- Table structure for table `survey`
+--
+
+DROP TABLE IF EXISTS `survey`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `survey` (
+  `id` int NOT NULL,
+  `visitLebanon` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `survey`
+--
+
+LOCK TABLES `survey` WRITE;
+/*!40000 ALTER TABLE `survey` DISABLE KEYS */;
+INSERT INTO `survey` VALUES (0,'No'),(1,'Yes'),(2,'Maybe');
+/*!40000 ALTER TABLE `survey` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `surveyResults`
+--
+
+DROP TABLE IF EXISTS `surveyResults`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `surveyResults` (
+  `id` int NOT NULL,
+  `option` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `username` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `country` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `surveyResults`
+--
+
+LOCK TABLES `surveyResults` WRITE;
+/*!40000 ALTER TABLE `surveyResults` DISABLE KEYS */;
+/*!40000 ALTER TABLE `surveyResults` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Ticket_Country`
 --
 
@@ -94,7 +143,7 @@ CREATE TABLE `Tickets` (
 
 LOCK TABLES `Tickets` WRITE;
 /*!40000 ALTER TABLE `Tickets` DISABLE KEYS */;
-INSERT INTO `Tickets` VALUES (2201,'9 am','Lebanon','USA','1500$'),(2202,'3 pm','Lebanon','Australia','2000$'),(2203,'2 am','Lebanon','Canada','1500$'),(2204,'5 pm','Lebanon','Japan','2000$'),(2205,'7 am ','Lebanon','London','3000$'),(2206,'6 pm','Lebanon','France','400$'),(2207,'4 am','Lebanon','Russia','600$'),(2208,'5 pm','Lebanon','Dubai','500$'),(2209,'6 am','Lebanon','Turkey','300$'),(2210,'5 am','Lebanon','Italy','3000$'),(2211,'6 pm','Lebanon','Iceland','2000$');
+INSERT INTO `Tickets` VALUES (2201,'9 am','Lebanon','USA','1500'),(2202,'3 pm','Lebanon','Australia','2000'),(2203,'2 am','Lebanon','Canada','1500'),(2204,'5 pm','Lebanon','Japan','2000'),(2205,'7 am ','Lebanon','London','3000'),(2206,'6 pm','Lebanon','France','400'),(2207,'4 am','Lebanon','Russia','600'),(2208,'5 pm','Lebanon','Dubai','500'),(2209,'6 am','Lebanon','Turkey','300'),(2210,'5 am','Lebanon','Italy','3000'),(2211,'6 pm','Lebanon','Iceland','2000');
 /*!40000 ALTER TABLE `Tickets` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,7 +163,7 @@ CREATE TABLE `User_Ticket` (
   KEY `TicketNo_idx` (`TicketNo`),
   CONSTRAINT `id` FOREIGN KEY (`user_id`) REFERENCES `Users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `TicketNo` FOREIGN KEY (`TicketNo`) REFERENCES `Tickets` (`TicketNo`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -123,7 +172,7 @@ CREATE TABLE `User_Ticket` (
 
 LOCK TABLES `User_Ticket` WRITE;
 /*!40000 ALTER TABLE `User_Ticket` DISABLE KEYS */;
-INSERT INTO `User_Ticket` VALUES (1,1,2208),(2,1,2209),(3,2,2209);
+INSERT INTO `User_Ticket` VALUES (1,1,2208),(2,1,2209),(3,2,2209),(4,10,2205),(5,10,2205),(6,10,2206);
 /*!40000 ALTER TABLE `User_Ticket` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -141,7 +190,7 @@ CREATE TABLE `Users` (
   `Location` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   `Email` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,7 +199,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'test','test','Italy','test@test.HOTMAIL.COM'),(2,'test2','test2','test','test@example.com'),(3,'test124','test1234','Canada','test2@example.com'),(4,'John','John1234','Italy','John@example.com'),(5,'Kevin','test','USA','Kevin@example.com'),(6,'test2','test2','France','test2@gmail.com'),(7,'test2','test2','France','test2@gmail.com'),(8,'Example','Example','Italy','Example@gmail.com'),(9,'Example','Example','Italy','Example@gmail.com');
+INSERT INTO `Users` VALUES (1,'test','test','Italy','test@test.HOTMAIL.COM'),(2,'test2','test2','test','test@example.com'),(3,'test124','test1234','Canada','test2@example.com'),(4,'John','John1234','Italy','John@example.com'),(5,'Kevin','test','USA','Kevin@example.com'),(6,'test2','test2','France','test2@gmail.com'),(7,'test2','test2','France','test2@gmail.com'),(8,'Example','Example','Italy','Example@gmail.com'),(9,'Example','Example','Italy','Example@gmail.com'),(10,'Nathalie','1234','Canada','nathaliesaab6@gmail.com');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -163,4 +212,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-08 12:35:41
+-- Dump completed on 2021-12-19 23:27:28
