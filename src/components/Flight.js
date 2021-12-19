@@ -54,7 +54,8 @@ const Flight = ({ id }) => {
         const response = await getTickets();
         try {
             setData(response?.data);
-
+            const userName = localStorage.getItem("username");
+            console.log("UserName is " + localStorage.getItem("username"));
         } catch (error) {
             console.log(error);
         }
@@ -62,7 +63,6 @@ const Flight = ({ id }) => {
 
         }
     }
-
 
     const purchaseFlight = (Ticket) => async (event) => {
         event.preventDefault();

@@ -95,7 +95,7 @@ const Login = ({ id, setId }) => {
         let Password = values.Password
         for (let i = 0; i < data.length; i++) {
             if (Name === data[i].Name && Password === data[i].Password) {
-                localStorage.setItem("user", data[i]);
+                localStorage.setItem("username", data[i].Name);
                 return true;
             }
         }
@@ -191,6 +191,14 @@ const Login = ({ id, setId }) => {
 }
 export default Login;
 
+
+const mapstateToProps = state => ({
+    users: state.userReducer.users,
+
+})
+
+
+// export default connect(mapstateToProps)(Login);
 
 
 
