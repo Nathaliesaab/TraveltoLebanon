@@ -19,6 +19,7 @@
     "express": "^4.17.1",
     "express-ip": "^1.0.4",
     "express-useragent": "^1.0.15",
+    "firebase": "^9.6.5",
     "google-auth-library": "^7.10.3",
     "hammerjs": "^2.0.8",
     "helmet": "^4.6.0",

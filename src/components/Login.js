@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getAll, getUserByName, googlelogin, insertUser } from '../api/api';
+import { getAll } from '../api/api';
 import {
     useHistory,
     Link
@@ -7,8 +7,6 @@ import {
 import Travel from './Tarvel';
 import { GoogleLogin } from 'react-google-login';
 import usersActions from '../redux/actions/users';
-import { connect } from 'react-redux';
-
 import axios from 'axios';
 const { OAuth2Client } = require('google-auth-library');
 
@@ -64,7 +62,6 @@ const Login = ({ id, setId }) => {
         loadUsers();
 
         // const { dispatch } = this.props;
-
         // dispatch(usersActions.getAll());
     }, [])
 
@@ -192,13 +189,7 @@ const Login = ({ id, setId }) => {
 export default Login;
 
 
-const mapstateToProps = state => ({
-    users: state.userReducer.users,
 
-})
-
-
-// export default connect(mapstateToProps)(Login);
 
 
 
